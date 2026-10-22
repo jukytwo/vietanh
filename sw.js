@@ -1,6 +1,6 @@
 /* Góc học tập: dùng được khi không có mạng. Trang lưu sẵn; clip chỉ lưu khi bấm tải. Mọi nội dung đều đã mã hoá. */
-const VER="dd6ae13372",APP="gh-app-"+VER,FONT="gh-font",CLIP="gh-clips";
-const CORE=["./","index.html","app_basic.bin","users.json","manifest.webmanifest","icon-192.png","icon-512.png","apple-touch-icon.png","favicon.png"];
+const VER="ee4fa195c0",APP="gh-app-"+VER,FONT="gh-font",CLIP="gh-clips";
+const CORE=["./","index.html","app_basic.bin","manifest.webmanifest","icon-192.png","icon-512.png","apple-touch-icon.png","favicon.png"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(APP).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith("gh-app-")&&k!==APP).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener("fetch",e=>{const req=e.request;if(req.method!=="GET")return;const u=new URL(req.url);
