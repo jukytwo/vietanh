@@ -1,5 +1,5 @@
 /* Góc học tập: dùng được khi không có mạng. Trang lưu sẵn; clip chỉ lưu khi bấm tải. Mọi nội dung đều đã mã hoá. */
-const VER="2efea9cd78",APP="gh-app-"+VER,FONT="gh-font",CLIP="gh-clips";
+const VER="7abaea9262",APP="gh-app-"+VER,FONT="gh-font",CLIP="gh-clips";
 const CORE=["./","index.html","app_basic.bin","manifest.webmanifest","icon-192.png","icon-512.png","apple-touch-icon.png","favicon.png"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(APP).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith("gh-app-")&&k!==APP).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
